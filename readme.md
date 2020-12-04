@@ -8,7 +8,7 @@ MARTA is a unified Bayesian Framework that integrates an attention-based model w
 
 # Using MARTA
 ## Create a virtual environment and install requirements
-We are using python3.6 in our implementation, you can create a virtual environment for MARTA using the following command:
+We are using python3.6 on a Ubuntu 16.04 machine with 32 CPUs and 128GB RAM. You can create a virtual environment for MARTA using the following command:
 ``` bash
 sudo apt-get install python3-venv
 python3.6 -m venv env-marta
