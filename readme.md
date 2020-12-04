@@ -1,10 +1,10 @@
 MARTA is a unified Bayesian Framework that integrates an attention-based model with labels and rationales contributed by workers.
 # Structure of MARTA's repository
 This repo is composed of four main directories:
-	- code: source code of MARTA
-	- data: contains two subfolders which are "original data" with the two datasets Amazon adn Wiki_tech used in the paper, and "processed_data" which contains the generated files from the original data needed to run MARTA.
-	- scripts: contains two scripts to run the code on the datasets used in the paper
-	- results: after running the code, the results will be saved in this directory
+	* code: source code of MARTA
+	* data: contains two subfolders which are "original data" with the two datasets Amazon adn Wiki_tech used in the paper, and "processed_data" which contains the generated files from the original data needed to run MARTA.
+	* scripts: contains two scripts to run the code on the datasets used in the paper
+	* results: after running the code, the results will be saved in this directory
 
 # Using MARTA
 ## Create a virtual environment and install requirements
