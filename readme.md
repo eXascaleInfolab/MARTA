@@ -1,13 +1,14 @@
+# MARTA: Leveraging Human Rationales for Explainable Text Classification
 MARTA is a unified Bayesian Framework that integrates an attention-based model with labels and rationales contributed by workers.
-# Structure of MARTA's repository
+## Structure of MARTA's repository
 - This repo is composed of four main directories:
 	- code: source code of MARTA
 	- data: contains two subfolders which are "original data" with the two datasets Amazon and Wiki_tech used in the paper, and "processed_data" which contains the generated files from the original data needed to run MARTA.
 	- scripts: contains two scripts to run the code on the datasets used in the paper
 	- results: after running the code, the results will be saved in this directory
 
-# Using MARTA
-## Create a virtual environment and install requirements
+## Using MARTA
+### Create a virtual environment and install requirements
 We are using python3.6 on a Ubuntu 16.04 machine with 32 CPUs and 128GB RAM. You can create a virtual environment for MARTA using the following command:
 ``` bash
 sudo apt-get install python3-venv
@@ -20,7 +21,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Running MARTA
+### Running MARTA
 To run MARTA on the amazon data, you can use the script: amazon.sh in the scripts folder
 ``` bash
 chmod u+x ./scripts/amazon.sh
@@ -33,11 +34,10 @@ chmod u+x ./scripts/wiki_tech.sh
 ../scripts/wiki_tech.sh
 ```
 
-# Using MARTA with other datasets:
-In order to generate the data needed for MARTA, you can use the python script gen_data_marta.py.
-The script takes as input a csv file with the following header:
-doc_id,text,label,WorkerId,worker_label,rationale
-where:
+## Using MARTA with other datasets:
+- In order to generate the data needed for MARTA, you can use the python script gen_data_marta.py.
+- The script takes as input a csv file with the following header:
+doc_id,text,label,WorkerId,worker_label,rationale, where:
 	- doc_id: the document id
 	- text: content of the document in one line
 	- label: ground truth binary label of the document
