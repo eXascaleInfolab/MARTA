@@ -1,0 +1,19 @@
+class,precision,recall,f1_score,support
+   0.0,0.98,0.54,0.69,294.0
+   1.0,0.3,0.94,0.45,62.0
+accuracy, 0.6067415730337079
+auprc, 0.6228444490944351
+auc, 0.7364494184770682
+M step retrain, 3
+class,precision,recall,f1_score,support
+   0.0,0.92,0.92,0.92,294.0
+   1.0,0.62,0.65,0.63,62.0
+accuracy, 0.8707865168539326
+auprc, 0.6659795215657847
+auc, 0.7817643186306781
+class,precision,recall,f1_score,support
+   0.0,0.91,0.6,0.72,294.0
+   1.0,0.27,0.71,0.39,62.0
+accuracy, 0.6207865168539326
+auprc, 0.5167655712867432
+auc, 0.6558591178406846

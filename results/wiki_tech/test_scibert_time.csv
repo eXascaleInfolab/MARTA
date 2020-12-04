@@ -1,0 +1,23 @@
+class,precision,recall,f1_score,support
+   0.0,0.98,0.57,0.72,295.0
+   1.0,0.32,0.95,0.48,62.0
+accuracy, 0.6358543417366946
+auprc, 0.6386102828228065
+auc, 0.7605522143247676
+elapsed time Attention, 56.30605888366699
+M step retrain, 3
+class,precision,recall,f1_score,support
+   0.0,0.96,0.91,0.93,295.0
+   1.0,0.64,0.81,0.71,62.0
+accuracy, 0.8879551820728291
+auprc, 0.740545349653509
+auc, 0.8557681793329688
+elapsed time MARTA, 947.6015539169312
+elapsed time MARTA E step, 218.1682107448578
+class,precision,recall,f1_score,support
+   0.0,0.95,0.59,0.73,295.0
+   1.0,0.3,0.84,0.44,62.0
+accuracy, 0.6358543417366946
+auprc, 0.5845232316482483
+auc, 0.7159650082012029
+elapsed time Attention, 44.443522214889526

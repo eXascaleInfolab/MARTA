@@ -1,0 +1,11 @@
+CUDA_VISIBLE_DEVICES=6 python main.py\
+	--data_path '../data/processed_data/amazon/'\
+	--evaluation_file '../results/amazon/test_albert_time.csv'\
+	--evaluation_file_val '../results/amazon/val_albert_time.csv'\
+	--epochs_mil 20\
+	--epochs_mil_retrain 20\
+	--weight_dir '../results/amazon/weight/'\
+	--embedding_type 'albert'\
+	--compute_embedding 0\
+	--max_iter 3\
+	--shuffle 1\
