@@ -203,8 +203,6 @@ end_val = X_train.shape[0]+X_val.shape[0]
 iter=0
 start_marta = time.time()
 while iter<MAX_ITER:
-    # print("*****iter****",iter)
-
     change_phi = 1
     n_updates_rj = args.n_updates
     norm_diff_old_phi =1
@@ -226,13 +224,13 @@ while iter<MAX_ITER:
         predictions_label = e_step.compute_zI(all_doc_ids[index_predictions], predictions_label, phi, worker_answer_matrix)
         n_updates_zi = n_updates_zi - 1
         change_zi, norm_diff_old_zi = e_step.update(predictions_label_old,predictions_label,norm_diff_old_zi)
-        # print("*******change zi******", change_zi)
         predictions_label_old = predictions_label.copy()
 
     pred_e_step_val = predictions_label.pred_1.values[start_val:end_val]
     y_pred_e_step_val = np.where(pred_e_step_val>pred_e_step_val.mean(),1,0)
     end_e = time.time()
     weights_sentences = e_step.compute_weight_i(all_sentences, weights_doc_id_init, phi, workers_answers_sent,MAX_SENTENCE_NUM)
+
 
 
     print("********E step**********")
@@ -252,20 +250,11 @@ while iter<MAX_ITER:
         columns={0: 'pred_0', 1: 'pred_1'}).append(
         pd.DataFrame(np.array([1-y_pred_e_step_val,y_pred_e_step_val]).T, columns=['pred_0', 'pred_1'], index=y_val.index))
 
-    # if iter>1:
-    #     # Load partly trained model
-    #     from keras.models import load_model
-    #     model_retrain = load_model('partly_trained.h5')
-    # Y_pred_val = model_retrain.predict(X_val)[0]
-    # print(Y_pred_val[0])
     history = model_retrain.fit(train_val_input, {"pred": y_pred, "weights": weights_e_steps},
                                 batch_size=BATCH_SIZE, epochs=args.epochs_mil_retrain,
                                 validation_data=(
                                 X_val, [pd.get_dummies(y_pred_e_step_val), weights_e_steps[-y_val.shape[0]:]]),
                                 callbacks=[EarlyStopping(monitor='val_pred_loss', mode='min', verbose=1, patience=2)])
-    # model_retrain.save('partly_trained.h5')
-
-
 
     # labels retrained
     Y_pred_val = model_retrain.predict(X_val)[0]
@@ -300,11 +289,9 @@ while iter<MAX_ITER:
     weights_doc_id_test = e_step.reconstruct_weights(weights_test_df, doc_id_sentence_id, y_test.index.values,
                                                      all_doc_ids)
     weights_doc_id_test.to_csv(weights_dir + '/weight_test_' + str(iter) + '.csv')
-    # weights_doc_id_init.to_csv(weights_dir + '/weight_init_' + str(iter) + '.csv')
-
     iter = iter + 1
-end_marta = time.time()
 
+end_marta = time.time()
 with open(evaluation_file_val, 'a') as f:
     f.write('M step retrain, %s\n' % iter)
 rs.save_results(evaluation_file_val, y_val, Y_pred_val_bin)
