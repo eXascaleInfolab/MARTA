@@ -31,6 +31,7 @@ cd code
 To run MARTA on the wiki_tech data, you can use the script: wiki_tech.sh in the scripts folder
 ``` bash
 chmod u+x ./scripts/wiki_tech.sh
+cd code
 ../scripts/wiki_tech.sh
 ```
 
@@ -58,4 +59,15 @@ cd ./code/data_process/
 python gen_data_marta.py --original_data '../../data/original_data/amazon.csv' --dir_gen_marta '../../data/processed_data/amazon/'
 ```
 
+## Citation
 
+Please cite the following paper when using MARTA:
+``` bash
+@inproceedings{arous2021aaai,
+  title = {MARTA: Leveraging Human Rationales for Explainable Text Classification},
+  author = {Arous, Ines and Dolamic, Ljiljana and Yang, Jie and Bhardwaj, Akansha and Cuccu, Giuseppe and Cudr{\'e}-Mauroux, Philippe},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI 2021)},
+  year = {2021},
+  address = {A Virtual Conference}
+}
+```

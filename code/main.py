@@ -150,6 +150,8 @@ rs.save_results(evaluation_file_val,y_val,Y_pred_val_bin)
 rs.save_results(evaluation_file,y_test,y_pred_test_eval)
 
 end_att  = time.time()
+
+
 print("######elapsed time Attention#######", end_att -start_att )
 with open(evaluation_file, 'a') as f:
     f.write('elapsed time Attention, %s\n' % (end_att -start_att))
@@ -169,6 +171,9 @@ weights_sent_train = activation_1.predict(X_train)
 weights_sent_val= activation_1.predict(X_val)
 weights_sent_test = activation_1.predict(X_test)
 #initialize the weight alpha_s
+weight_sent_test = pd.DataFrame(weights_sent_test)
+weight_sent_test['id'] = y_test.index.values
+
 weight_sent_all = pd.DataFrame(np.append(weights_sent_train,weights_sent_val,axis=0))
 weight_sent_all['id'] = index_predictions
 
@@ -180,6 +185,8 @@ doc_id_sentence_id = workers_answers_sent[['doc_id','sentence_id']].drop_duplica
 weights_doc_id_init = e_step.reconstruct_weights(weight_sent_all,doc_id_sentence_id,index_predictions,all_doc_ids)
 weights_doc_id_init.to_csv(weights_dir+'/weight_init_0.csv')
 
+weights_doc_id_test_init = e_step.reconstruct_weights(weight_sent_test,doc_id_sentence_id,y_test.index.values,all_doc_ids)
+weights_doc_id_test_init.to_csv(weights_dir+'/weight_init_test_0.csv')
 
 weight = pd.DataFrame(columns=['sentence_id', 'weight_s_0', 'weight_s_1'])
 B_workers_answers_sent = workers_answers_sent[['WorkerId', 'sentence_id', 'sentence_label']]
